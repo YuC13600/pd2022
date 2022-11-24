@@ -2,27 +2,21 @@
 #include<stdlib.h>
 
 int g(int x, int y){
-    int ans=1;
-    if(x>y) x^=y^=x^=y;
-    int i;
-    for(i=1;i<=x;++i)
-        if(x%i==0 && y%i==0)
-            ans=i;
-    return ans;
+    if(x) while((x%=y) && (y%=x));
+    return x+y;
 }
 int main(void){
-    long long sum1=0, sum2=0, N;
+    int N;
     for(;;){
+        int sum=0;
         scanf("%lld", &N);
         if(N==0) return 0;
         int x;
-        for(x=1;x<N;++x)
-            sum1+=x;
-        x--;
-        int y;
-        for(y=x+1;y<=N;++y)
-            sum2+=y;
-        y--;
-        printf("%lld\n", sum1*sum2*g(x, y));
+        for(x=1;x<N;++x){
+            int y;
+            for(y=x+1;y<=N;++y)
+                sum+=g(x, y);
+        }
+        printf("%d\n", sum);
     }
 }
