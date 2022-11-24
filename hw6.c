@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdlib.h>
 
 int g(int x, int y){
     if(x) while((x%=y) && (y%=x));
