@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int g(int x, int y){
-    if(x) while((x%=y) && (y%=x));
+    if(y) while((x%=y) && (y%=x));
     return x+y;
 }
 int main(void){
