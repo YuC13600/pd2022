@@ -41,7 +41,6 @@ int main(void){
             }
         }
         while(p1>0 || tempsum>=in){
-            // if(p1<=0 && tempsum<in) break;
             if(tempsum>in){
                 tempsum-=get_arr_value(&p2);
                 if(tempsum>in) p1=p2;
