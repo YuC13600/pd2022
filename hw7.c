@@ -41,16 +41,14 @@ int main(void){
             }
         }
         while(p1>0 || tempsum>=in){
-            if(tempsum>in){
+            if(tempsum>in)
                 tempsum-=get_arr_value(&p2);
-                if(tempsum>in) p1=p2;
-            }
-            else if(tempsum==in){
+            else if(tempsum<in)
+                tempsum+=get_arr_value(&p1);
+            else{
                 total++;
                 tempsum+=get_arr_value(&p1);
             }
-            else
-                tempsum+=get_arr_value(&p1);
         }
         printf("%d\n", total);
     }
