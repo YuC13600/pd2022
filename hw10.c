@@ -17,7 +17,6 @@ int main(void){
         int i, j;
         int len = strlen(input);
         qsort(input, len, sizeof(char), charcompare);
-        printf("%s\n", input);
         char carr[1500]={0};
         int iarr[1500]={0};
         int arrCounter=0;
