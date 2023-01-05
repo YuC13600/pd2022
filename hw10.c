@@ -10,10 +10,14 @@ int charcompare(const void *p1, const void *p2){
     else if(a<b) return -1;
     else return 1;
 }
-
+int st=1;
 int main(void){
     char input[1510];
     while(scanf("%[^\n]%*c",input)!=EOF){
+        if(st)
+            st=0;
+        else
+            printf("\n\n");
         int i, j;
         int len = strlen(input);
         qsort(input, len, sizeof(char), charcompare);
@@ -43,9 +47,10 @@ int main(void){
             }
         }
         for(i=0;i<arrCounter;++i){
-            printf("%d %d\n", (int)carr[i], iarr[i]);
+            printf("%d %d", (int)carr[i], iarr[i]);
+            if(i!=arrCounter-1)
+                printf("\n");
         }
-        printf("\n");
     }
     return 0;
 }
