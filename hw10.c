@@ -12,15 +12,21 @@ int charcompare(const void *p1, const void *p2){
 }
 int st=1;
 int main(void){
-    char input[1510];
-    while(scanf("%[^\n]%*c",input)!=EOF && '\n'){
-        // if(st)
-        //     st=0;
-        // else
-        //     printf("\n\n");
+    char inputstr[1510];
+    char* input;
+    while(scanf("%[^\n]%*c",inputstr)!=EOF){
+        if(st)
+            st=0;
+        else
+            printf("\n");
         int i, j;
-        int len = strlen(input);
-        qsort(input, len, sizeof(char), charcompare);
+        int len = strlen(inputstr);
+        qsort(inputstr, len, sizeof(char), charcompare);
+        int s=0;
+        while(((int)inputstr[s])<=31)
+            s++;
+        input=(inputstr+s);
+        len=strlen(input);
         char carr[1500]={0};
         int iarr[1500]={0};
         int arrCounter=0;
@@ -48,12 +54,11 @@ int main(void){
         }
         for(i=0;i<arrCounter;++i){
             printf("%d %d", (int)carr[i], iarr[i]);
-            //if(i!=arrCounter-1)
+            if(i!=arrCounter-1)
                 printf("\n");
         }
         printf("\n");
     }
 
-    //printf("\n");
     return 0;
 }
