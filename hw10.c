@@ -53,12 +53,8 @@ int main(void){
             }
         }
         for(i=0;i<arrCounter;++i){
-            printf("%d %d", (int)carr[i], iarr[i]);
-            if(i!=arrCounter-1)
-                printf("\n");
+            printf("%d %d\n", (int)carr[i], iarr[i]);
         }
-        printf("\n");
     }
-
     return 0;
 }
