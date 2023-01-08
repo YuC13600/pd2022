@@ -1,53 +1,53 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 struct node{
-    int num, quantity;
-    char name[100];
-    struct node *next;
+    int num, hand;
+    char name[25];
+    struct node* next;
 };
-
 typedef struct node Node;
 
 int main(void){
     char cmd;
-    Node* head=malloc(sizeof(Node));
+    Node* head=(Node*)malloc(sizeof(Node));
     head->next=NULL;
-    Node* now=head;
     for(;;){
-        Node* temp=head;
-        int tar;
         printf("Enter operation code: ");
         scanf("%c%*c", &cmd);
-        switch(cmd){
+        Node* current = head;
+        int tar;
+        switch (cmd){
             case 'i':
-                now->next=malloc(sizeof(Node));
-                now=now->next;
+                while(current->next!=NULL){
+                    current=current->next;
+                }
+                current->next=(Node*)malloc(sizeof(Node));
+                current=current->next;
                 printf("Enter part number: ");
-                scanf("%d%*c", &(now->num));
+                scanf("%d%*c", &(current->num));
                 printf("Enter part name: ");
-                scanf("%[^\n]%*c", now->name);
+                scanf("%[^\n]%*c", &(current->name));
                 printf("Enter quantity on hand: ");
-                scanf("%d%*c", &(now->quantity));
-                now->next = NULL;
-                printf("\n");
+                scanf("%d%*c", &(current->hand));
+                current->next=NULL;
                 break;
             case 's':
                 printf("Enter part number: ");
                 scanf("%d%*c", &tar);
                 while(1){
-                    if(temp->num==tar){
-                        printf("Part name: %s \n Quantity on hand: %d \n\n", temp->name, temp->quantity);
+                    if(current->num == tar){
+                        printf("Part name: %s\n", current->name);
+                        printf("Quantity on hand: %d\n", current->hand);
                         break;
                     }
+                    if(current->next!=NULL){
+                        current=current->next;
+                    }
                     else{
-                        if(temp->next==NULL){
-                            printf("Part not found.\n");
-                            break;
-                        }
-                        else{
-                            temp=temp->next;
-                        }
+                        printf("Part not found.\n");
+                        break;
                     }
                 }
                 break;
@@ -55,33 +55,37 @@ int main(void){
                 printf("Enter part number: ");
                 scanf("%d%*c", &tar);
                 while(1){
-                    if(temp->num==tar){
+                    if(current->num == tar){
+                        int mod;
                         printf("Enter change in quantity on hand: ");
-                        scanf("%d%*c", &(temp->quantity));
+                        scanf("%d%*c", &mod);
+                        current->hand+=mod;
                         break;
                     }
+                    if(current->next!=NULL){
+                        current=current->next;
+                    }
                     else{
-                        if(temp->next==NULL){
-                            printf("Part not found.\n");
-                            break;
-                        }
-                        else{
-                            temp=temp->next;
-                        }
+                        printf("Part not found.\n");
+                        break;
                     }
                 }
                 break;
             case 'p':
                 printf("Part Number    Part Name               Quantity on Hand\n");
-                while(temp->next!=NULL){
-                    printf("%6d          %23s %11d\n", temp->num, temp->name, temp->quantity);
-                    temp=temp->next;
+                current=current->next;
+                while(current->next!=NULL){
+                    printf("%7d        %-24s%9d\n", current->num, current->name, current->hand);
+                    current=current->next;
                 }
-                printf("%6d          %23s %11d\n", temp->num, temp->name, temp->quantity);
+                printf("%7d        %-24s%9d\n", current->num, current->name, current->hand);
                 break;
             case 'q':
                 return 0;
-            default: break;
+                break;
+            default:
+                break;
         }
+        printf("\n");
     }
 }
