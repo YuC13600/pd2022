@@ -16,7 +16,7 @@ int main(void){
     for(;;){
         printf("Enter operation code: ");
         scanf("%c%*c", &cmd);
-        Node* current = head->next;
+        Node* current = head;
         int tar;
         switch (cmd){
             case 'i':
@@ -36,25 +36,22 @@ int main(void){
             case 's':
                 printf("Enter part number: ");
                 scanf("%d%*c", &tar);
-                while(1){
+                while(current!=NULL){
                     if(current->num == tar){
                         printf("Part name: %s\n", current->name);
                         printf("Quantity on hand: %d\n", current->hand);
                         break;
                     }
-                    if(current->next!=NULL){
-                        current=current->next;
-                    }
-                    else{
-                        printf("Part not found.\n");
-                        break;
-                    }
+                    else current=current->next;
+                }
+                if(current==NULL){
+                    printf("Part not found.\n");
                 }
                 break;
             case 'u':
                 printf("Enter part number: ");
                 scanf("%d%*c", &tar);
-                while(1){
+                while(current!=NULL){
                     if(current->num == tar){
                         int mod;
                         printf("Enter change in quantity on hand: ");
@@ -62,17 +59,15 @@ int main(void){
                         current->hand+=mod;
                         break;
                     }
-                    if(current->next!=NULL){
-                        current=current->next;
-                    }
-                    else{
-                        printf("Part not found.\n");
-                        break;
-                    }
+                    else current=current->next;
+                }
+                if(current==NULL){
+                    printf("Part not found.\n");
                 }
                 break;
             case 'p':
                 printf("Part Number    Part Name               Quantity on Hand\n");
+                current=current->next;
                 while(current->next!=NULL){
                     printf("%7d        %-24s%9d\n", current->num, current->name, current->hand);
                     current=current->next;
