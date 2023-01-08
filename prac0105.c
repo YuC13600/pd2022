@@ -16,7 +16,7 @@ int main(void){
     for(;;){
         printf("Enter operation code: ");
         scanf("%c%*c", &cmd);
-        Node* current = head;
+        Node* current = head->next;
         int tar;
         switch (cmd){
             case 'i':
@@ -73,7 +73,6 @@ int main(void){
                 break;
             case 'p':
                 printf("Part Number    Part Name               Quantity on Hand\n");
-                current=current->next;
                 while(current->next!=NULL){
                     printf("%7d        %-24s%9d\n", current->num, current->name, current->hand);
                     current=current->next;
