@@ -18,10 +18,10 @@ fn main(){
         let mut a: u64 = a_str.parse().unwrap();
 
         let b_str = input_str.next().unwrap();
-        let  b: u64 = b_str.parse().unwrap();
+        let b: u64 = b_str.parse().unwrap();
 
         let c_str = input_str.next().unwrap();
-        let  c: u64 = c_str.parse().unwrap();
+        let c: u64 = c_str.parse().unwrap();
         
         input.clear();
 
