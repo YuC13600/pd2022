@@ -14,15 +14,9 @@ fn main(){
             .unwrap();
         let mut input_str = input.trim().split(' ');
         
-        let a_str = input_str.next().unwrap();
-        let mut a: u64 = a_str.parse().unwrap();
-
-        let b_str = input_str.next().unwrap();
-        let b: u64 = b_str.parse().unwrap();
-
-        let c_str = input_str.next().unwrap();
-        let c: u64 = c_str.parse().unwrap();
-        
+        let mut a = str2u64(input_str.next().unwrap());
+        let b = str2u64(input_str.next().unwrap());
+        let c = str2u64(input_str.next().unwrap());
         input.clear();
 
         let mut sum: u64 = 0;
@@ -35,3 +29,7 @@ fn main(){
     }
 }
 
+fn str2u64(var_str: &str) -> u64 {
+    let var: u64 = var_str.parse().unwrap();
+    var
+}
