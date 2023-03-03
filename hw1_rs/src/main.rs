@@ -9,9 +9,7 @@ fn main(){
     let n: u64 = input.trim().parse().unwrap();
     input.clear();
     for _ in 0..n {
-        io::stdin()
-            .read_line(&mut input)
-            .unwrap();
+        io::stdin().read_line(&mut input).unwrap();
         let mut input_str = input.trim().split(' ');
         
         let mut a = str2u64(input_str.next().unwrap());

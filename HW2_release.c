@@ -4,7 +4,7 @@ int main(void){
     int a1, a2, b1, b2;
     for(;;){
         scanf("%d %d %d %d", &a1, &a2, &b1, &b2);
-        if(a1==0 && a2==0 && b1==0 && b2==0)
+        if(a1+a2+b1+b2 == 0)
             return 0;
         else{
             if(a1==b1 && b2<a2){
