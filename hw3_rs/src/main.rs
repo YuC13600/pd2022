@@ -10,8 +10,6 @@ fn main() {
             return;
         }
         let arr: Vec<i32> = buffer.trim().split(' ')
-            .collect::<Vec<&str>>()
-            .iter()
             .map(|x| (*x).parse::<i32>().unwrap()).collect();
         // println!("{} {} {}", arr[0], arr[1], arr[2]);
         println!("{}", chk(arr));
